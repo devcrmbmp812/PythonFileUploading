@@ -1,0 +1,33 @@
+{% extends "template.html" %}
+{% block content %}
+    <div class="jumbotron">
+        <h1>Log in</h1>
+        <form class="form-signin" role="form" action="" method="post">
+            {{ form.csrf_token }}
+            <p>Username:
+                {{ form.username(placeholder="username") }}
+                {% if form.username.errors %}
+                    <span class="error">
+          {% for error in form.username.errors %}
+              {{ error }}
+          {% endfor %}
+        </span>
+                {% endif %}
+            </p>
+            <p>Password:
+                {{ form.password(placeholder="password", autocomplete="off") }}
+                {% if form.username.errors %}
+                    <span class="error">
+          {% for error in form.username.errors %}
+              {{ error }}
+          {% endfor %}
+        </span>
+                {% endif %}
+            </p>
+            <p>
+                <button class="button" type="submit">Log in</button>
+                or
+                <a href="/signup">Sign up</a></p>
+        </form>
+    </div>
+{% endblock %}
